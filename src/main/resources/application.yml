@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active: production
+  application:
+    name: video-hosting
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/video_hosting
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: app
+
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+
+server:
+  port: 8082
+
+authorization:
+  enabled: true
+  default:
+    black-list:
+  session-service-host: http://localhost:8081/api/v1
+
