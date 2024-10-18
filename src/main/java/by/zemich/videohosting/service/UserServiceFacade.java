@@ -1,5 +1,6 @@
 package by.zemich.videohosting.service;
 
+import by.zemich.sessionauthorizationstarter.annotation.Authorize;
 import by.zemich.videohosting.core.exceptions.UserWithSuchUsernameAlreadyExists;
 import by.zemich.videohosting.dao.entities.User;
 import by.zemich.videohosting.core.models.dto.request.UserData;
@@ -50,6 +51,7 @@ public class UserServiceFacade {
                         ), () -> new UserNotFoundException("User with id: %s is nowhere to be found".formatted(userId)));
     }
 
+    @Authorize
     public UseRepresentation create(UserData userData) {
         String username = userData.getUsername();
         if (userCrudService.existsByUsername(username)) throw new UserWithSuchUsernameAlreadyExists(username);

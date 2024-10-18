@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: production
   application:
     name: video-hosting
 
@@ -20,9 +22,15 @@ spring:
         default_schema: app
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
 
 server:
   port: 8082
+
+authorization:
+  enabled: true
+  default:
+    black-list:
+  session-service-host: http://localhost:8081/api/v1
 

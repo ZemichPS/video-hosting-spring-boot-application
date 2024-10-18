@@ -21,7 +21,6 @@ public class RoutingConfiguration {
 
     private final ExceptionHandlerHolder exceptionHandlerHolder;
 
-
     @Bean
     RouterFunction<ServerResponse> route(UserRestHandler userRestHandler,
                                          CategoryHandler categoryHandler,
@@ -48,7 +47,7 @@ public class RoutingConfiguration {
                         )
                         .nest(RequestPredicates.path("/{user_id}/channels"),
                                 r2 -> r2
-                                        .GET( handler::findAll)
+                                        .GET(handler::findAll)
                                         .build()
                         )
                         .nest(RequestPredicates.path("/{user_id}"),
@@ -59,7 +58,7 @@ public class RoutingConfiguration {
                                         .DELETE(handler::delete)
                                         .build()
                         )
-                        .POST(handler::create)
+                        .POST("", handler::create)
                         .build()
         );
     }

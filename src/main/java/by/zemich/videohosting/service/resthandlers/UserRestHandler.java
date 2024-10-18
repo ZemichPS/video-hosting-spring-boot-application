@@ -1,5 +1,6 @@
 package by.zemich.videohosting.service.resthandlers;
 
+import by.zemich.sessionauthorizationstarter.annotation.Authorize;
 import by.zemich.videohosting.core.models.dto.request.UserData;
 import by.zemich.videohosting.core.models.dto.response.ChannelShortRepresentation;
 import by.zemich.videohosting.core.models.dto.response.UseRepresentation;
